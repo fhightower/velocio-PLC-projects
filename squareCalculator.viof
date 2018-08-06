@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!--Velocio Builder 1.1-->
+<!--www.Velocio.net-->
+<VelocioNetworks IPAddress="">
+  <Setup ProjectType="FlowChart" />
+  <Connections>
+    <Connection sKey="vFactoryPage" bRemoteWritable="True" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="UI16" dataSource="register" />
+    <Connection sKey="InBitC1" iPort="2" iPin="1" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="InBitC2" iPort="2" iPin="2" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="InBitC3" iPort="2" iPin="3" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="InBitC4" iPort="2" iPin="4" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="InBitC5" iPort="2" iPin="5" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="InBitC6" iPort="2" iPin="6" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="input" />
+    <Connection sKey="OutBitD1" iPort="3" iPin="1" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="OutBitD2" iPort="3" iPin="2" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="OutBitD3" iPort="3" iPin="3" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="OutBitD4" iPort="3" iPin="4" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="OutBitD5" iPort="3" iPin="5" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="OutBitD6" iPort="3" iPin="6" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="Bit" dataSource="output" />
+    <Connection sKey="result" ui32Mask="0" ui32MessageId="0" ui32Period="0" dataType="UI16" dataSource="register" />
+  </Connections>
+  <Modbus />
+  <SubroutineInputs cellsHeigh="0" />
+  <Cells>
+    <start rung="0" row="1" column="1" cellsHeigh="-1" iSortedIndex="-1" />
+    <coilCopy rung="0" row="3" column="4" cellsHeigh="5" iSortedIndex="0" CopyType="standard">
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="0" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD1" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD2" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD3" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD4" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD5" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD6" sIndex="" dtAddress="Bit" />
+    </coilCopy>
+    <coilCopy rung="0" row="9" column="4" cellsHeigh="5" iSortedIndex="1" CopyType="pack">
+      <eKeySource sAddress="InBitC1" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="InBitC2" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="InBitC3" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="InBitC4" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="InBitC5" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="InBitC6" sIndex="" dtAddress="Bit" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeySource sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="result" sIndex="" dtAddress="UI16" />
+    </coilCopy>
+    <coilCalc rung="0" row="16" column="3" cellsHeigh="3" iSortedIndex="2">
+      <eStoreIn sAddress="result" sIndex="" dtAddress="UI16" />
+      <Equation>
+        <mathElement sAddress="result" sIndex="" dtAddress="UI16" />
+        <mathElement sAddress=" " sIndex="" dtAddress="Symbol" />
+        <mathElement sAddress=" " sIndex="" dtAddress="Symbol" />
+        <mathElement sAddress="*" sIndex="" dtAddress="Symbol" />
+        <mathElement sAddress=" " sIndex="" dtAddress="Symbol" />
+        <mathElement sAddress="result" sIndex="" dtAddress="UI16" />
+        <mathElement sAddress=" " sIndex="" dtAddress="Symbol" />
+      </Equation>
+    </coilCalc>
+    <Less rung="0" row="16" column="11" cellsHeigh="-1" iSortedIndex="3">
+      <eAddress1 sAddress="result" sIndex="" dtAddress="UI16" />
+      <eAddress2 sAddress="64" sIndex="" dtAddress="UI8" />
+    </Less>
+    <coilCopy rung="0" row="15" column="15" cellsHeigh="5" iSortedIndex="4" CopyType="unpack">
+      <eKeySource sAddress="result" sIndex="" dtAddress="UI16" />
+      <eKeyDestination sAddress="OutBitD1" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD2" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD3" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD4" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD5" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="OutBitD6" sIndex="" dtAddress="Bit" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+      <eKeyDestination sAddress="" sIndex="" dtAddress="None" />
+    </coilCopy>
+  </Cells>
+  <FlowConnections>
+    <FlowConn From="0" Yes="1" dirYesFrom="down" dirYesTo="left" />
+    <FlowConn From="1" Yes="2" dirYesFrom="down" dirYesTo="up" />
+    <FlowConn From="2" Yes="3" dirYesFrom="down" dirYesTo="up" />
+    <FlowConn From="3" Yes="4" dirYesFrom="right" dirYesTo="left" />
+    <FlowConn From="4" Yes="5" dirYesFrom="right" dirYesTo="left" />
+  </FlowConnections>
+  <Wires />
+  <Comments />
+</VelocioNetworks>
